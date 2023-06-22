@@ -3,21 +3,21 @@
                     
 ### 1 .Clone the git repo and create an environment 
           
-Depending on your operating system,make a virtual environment to avoid messing with your machine's primary dependencies
+Depending on your operating system, make a virtual environment to avoid messing with your machine's primary dependencies
           
 **Windows**
           
 ```bash
-git clone https://github.com/Dev-Elie/Connecting-React-Frontend-to-a-Flask-Backend.git
-cd Connecting-React-Frontend-to-a-Flask-Backend/backend
+git clone https://github.com/Louis-Hoang/bankDashboard.git
+cd bankDashboard/api
 py -3 -m venv venv
 ```
           
 **macOS/Linux**
           
 ```bash
-git clone https://github.com/Dev-Elie/Connecting-React-Frontend-to-a-Flask-Backend.git
-cd Connecting-React-Frontend-to-a-Flask-Backend/backend
+git clone https://github.com/Louis-Hoang/bankDashboard.git
+cd bankDashboard/api
 python3 -m venv venv
 ```
 
