@@ -3,7 +3,7 @@
                     
 ### 1 .Clone the git repo and create an environment 
           
-Depending on your operating system, make a virtual environment to avoid messing with your machine's primary dependencies
+Our goal now is to make a virtual environment to avoid conflicting with our machine's primary dependencies
           
 **Windows**
           
@@ -38,38 +38,34 @@ or
 Applies for windows/macOS/Linux
 
 ```pip install -r requirements.txt```
-### 4 .Migrate/Create a database - Optional during initial set up
-
-Applies for windows/macOS/Linux
-
-```python manage.py```
 
 ### 5. Run the application 
 
 **For linux and macOS**
 Make the run file executable by running the code
 
-```chmod 777 run```
+```python app.py```
 
 Then start the application by executing the run file
 
-```./run```
+```yarn start-api```
 
 **On windows**
 ```
-set FLASK_APP=routes
+set FLASK_APP=app
 flask run
 ```
 OR 
-`python routes.py`
+`python app.py`
 
 ## Frontend - React
 ### Installation
 
-You just need to install the packages listed on package.json, on the frontend folder.
+We just need to install the packages listed on package.json.
 
+From api folder
 ```
-cd Connecting-React-Frontend-to-a-Flask-Backend/frontend
+cd ..
 npm install
 ```
 
@@ -84,7 +80,3 @@ In an active virtual environment install updates using the command:
 Update the reqirements.txt file.
 
 `pip freeze > requirements.txt`
-
-![](https://github.com/Dev-Elie/Connecting-React-Frontend-to-a-Flask-Backend/blob/main/flask%2Breact.png)
-<div align="center"><h1>Follow me on Twitter</h1></div>
-<p align="center"> <a href="https://twitter.com/dev_elie" target="blank"><img src="https://img.shields.io/twitter/follow/dev_elie?logo=twitter&style=for-the-badge" alt="dev_elie" /></a> </p>
