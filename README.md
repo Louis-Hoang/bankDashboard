@@ -80,3 +80,8 @@ In an active virtual environment install updates using the command:
 Update the reqirements.txt file.
 
 `pip freeze > requirements.txt`
+
+## Notes
+
+In order to run that web app you have to run both the back-end on port `http://localhost:3000` and the front-end on port `http://localhost:5000` by `yarn start-api` and `npm start` (or `yarn start`), respectively.
+
