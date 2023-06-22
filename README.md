@@ -83,5 +83,5 @@ Update the reqirements.txt file.
 
 ## Notes
 
-In order to run that web app you have to run both the back-end on port `http://localhost:3000` and the front-end on port `http://localhost:5000` by `yarn start-api` and `npm start` (or `yarn start`), respectively.
+In order to run the web app you have to run both the back-end on port `http://localhost:3000` and the front-end on port `http://localhost:5000` by `yarn start-api` and `npm start` (or `yarn start`), respectively.
 
