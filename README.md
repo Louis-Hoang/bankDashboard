@@ -63,9 +63,8 @@ OR
 
 We just need to install the packages listed on package.json.
 
-From api folder
+Open a new terminal at folder `/bankDashboard`, then 
 ```
-cd ..
 npm install
 ```
 
