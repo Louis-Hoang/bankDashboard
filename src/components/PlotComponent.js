@@ -58,7 +58,8 @@ const PlotComponent = ({ returnData }) => {
   }
  
   if (returnData) {
-    var linePlot = trendLine(returnData);
+    // console.log(returnData)
+    var stateName = returnData['state'][0] + (returnData['state'].slice(1)).toLowerCase();
   }
 
   if (returnData && typeof returnData['data'][0] == 'string') {
@@ -73,7 +74,7 @@ const PlotComponent = ({ returnData }) => {
                 type: 'scatter'
               }
             ]}
-          layout={{ margin: { l: 140 }, width: 720, height: 440, title: `${returnData['bank']} ${returnData['metricName']} Graph` , yaxis : {tickformat: '$,'}} }
+          layout={{ margin: { l: 140 }, width: 720, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graph` , yaxis : {tickformat: '$,'}} }
         />
       </div>
     );
@@ -81,31 +82,19 @@ const PlotComponent = ({ returnData }) => {
   else if (returnData) {
     
     return (
-      // <div className = "wrapper">
-      //   <Plot
-      //     data={[
-      //         {
-      //           x: returnData['year'],
-      //           y: returnData['data'],
-      //           type: 'scatter'
-      //         }
-      //       ]}
-      //     layout={ {width: 620, height: 440, title: `${returnData['bank']} ${returnData['metricName']} Graphs`, yaxis: {tickformat:','}} }
-      //   />
-      // </div>
-      <div>
+      <div className = "wrapper">
         <Plot
           data={[
               {
                 x: returnData['year'],
                 y: returnData['data'],
-                type: 'bar'
-              },
-              linePlot
+                type: 'scatter'
+              }
             ]}
-          layout={{ margin: { l: 140 }, width: 720, height: 440, title: `${returnData['bank']} ${returnData['metricName']} Graph` , yaxis : {tickformat: ','}} }
+          layout={ {width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graphs`, yaxis: {tickformat:','}} }
         />
       </div>
+      
     );
   }
   

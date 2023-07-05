@@ -6,13 +6,84 @@ import MenuList from './MenuList';
 
 const FormComponent = ({ setReturnData }) => {
   const [bankData, setBankData] = useState(null);
+
   
+function abbrState(input, to){  
+    var states = [
+        ['Arizona', 'AZ'],
+        ['Alabama', 'AL'],
+        ['Alaska', 'AK'],
+        ['Arkansas', 'AR'],
+        ['California', 'CA'],
+        ['Colorado', 'CO'],
+        ['Connecticut', 'CT'],
+        ['Delaware', 'DE'],
+        ['Florida', 'FL'],
+        ['Georgia', 'GA'],
+        ['Hawaii', 'HI'],
+        ['Idaho', 'ID'],
+        ['Illinois', 'IL'],
+        ['Indiana', 'IN'],
+        ['Iowa', 'IA'],
+        ['Kansas', 'KS'],
+        ['Kentucky', 'KY'],
+        ['Louisiana', 'LA'],
+        ['Maine', 'ME'],
+        ['Maryland', 'MD'],
+        ['Massachusetts', 'MA'],
+        ['Michigan', 'MI'],
+        ['Minnesota', 'MN'],
+        ['Mississippi', 'MS'],
+        ['Missouri', 'MO'],
+        ['Montana', 'MT'],
+        ['Nebraska', 'NE'],
+        ['Nevada', 'NV'],
+        ['New Hampshire', 'NH'],
+        ['New Jersey', 'NJ'],
+        ['New Mexico', 'NM'],
+        ['New York', 'NY'],
+        ['North Carolina', 'NC'],
+        ['North Dakota', 'ND'],
+        ['Ohio', 'OH'],
+        ['Oklahoma', 'OK'],
+        ['Oregon', 'OR'],
+        ['Pennsylvania', 'PA'],
+        ['Rhode Island', 'RI'],
+        ['South Carolina', 'SC'],
+        ['South Dakota', 'SD'],
+        ['Tennessee', 'TN'],
+        ['Texas', 'TX'],
+        ['Utah', 'UT'],
+        ['Vermont', 'VT'],
+        ['Virginia', 'VA'],
+        ['Washington', 'WA'],
+        ['West Virginia', 'WV'],
+        ['Wisconsin', 'WI'],
+        ['Wyoming', 'WY'],
+    ];
+
+    if (to === 'abbr'){
+        input = input.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+        for(var i = 0; i < states.length; i++){
+            if(states[i][0] === input){
+                return(states[i][1]);
+            }
+        }    
+    } else if (to === 'name'){
+        input = input.toUpperCase();
+        for(i = 0; i < states.length; i++){
+            if(states[i][1] === input){
+                return(states[i][0]);
+            }
+        }    
+    }
+}
   
   useEffect(() => {
     const fetchBankData = async () => {
       try {
         const response = await fetch(
-          'https://banks.data.fdic.gov/api/institutions?filters=ACTIVE%3A1&fields=CITY%2CNAME&limit=10000&format=json&download=false&filename=data_file'
+          'https://banks.data.fdic.gov/api/institutions?filters=ACTIVE%3A1&fields=STNAME%2CNAME&limit=10000&format=json&download=false&filename=data_file'
         );
 
         if (!response.ok) {
@@ -25,11 +96,22 @@ const FormComponent = ({ setReturnData }) => {
         const data = bankData.data;
 
         // Transform the data into the desired format
-        const transformedData = data.map((item) => ({
-          value: item['data']['NAME'],
-          label: item['data']['NAME'],
-        }));
-
+        // const transformedData = data.map((item) => ({
+        //   value: item['data']['NAME'],
+        //   label: item['data']['NAME'],
+        //   state: item['data']['STNAME']
+        // }));
+        const transformedData = data.map((item) => {
+          var { NAME, STNAME } = item['data'];
+          var fullState = STNAME;
+          STNAME = abbrState(STNAME, 'abbr')
+          const label = STNAME ? `${NAME} (${STNAME})` : NAME;
+          return {
+            value: [NAME,fullState],
+            label: label,
+            state: STNAME
+          };
+      });
         // Set the transformed data in the suggestions state
         setBankData(transformedData);
       } catch (error) {
@@ -58,7 +140,6 @@ const FormComponent = ({ setReturnData }) => {
     year: ''
   });
 
-  // const [returnData, setReturnData] = useState(null);
 
   const handleChange = (event) => {
     const { name, value } = event.target || event;
