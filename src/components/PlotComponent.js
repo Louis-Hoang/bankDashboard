@@ -71,7 +71,7 @@ const PlotComponent = ({ returnData, loading }) => {
     var eq = returnData['equity'].slice(-1);
   }
 
-  if (loading && !returnData) {
+  if (loading) {
     return (
       <div className="loadingContainer">
         <div className="loadingSpinner"></div>
