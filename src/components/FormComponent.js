@@ -95,12 +95,7 @@ function abbrState(input, to){
         // Extract the relevant data from the response
         const data = bankData.data;
 
-        // Transform the data into the desired format
-        // const transformedData = data.map((item) => ({
-        //   value: item['data']['NAME'],
-        //   label: item['data']['NAME'],
-        //   state: item['data']['STNAME']
-        // }));
+
         const transformedData = data.map((item) => {
           var { NAME, STNAME } = item['data'];
           var fullState = STNAME;
@@ -124,9 +119,7 @@ function abbrState(input, to){
 
   
   const metricOptions = [
-    // { value: 'ASSET', label: 'Asset' },
     { value: 'DEP', label: 'Deposit' },
-    // { value: 'ROA', label: 'Return on assets' },
     { value: 'ROE', label: 'Return on equity' },
     { value: 'NIMY', label: 'Net interest margin' },
     { value: 'EEFFR', label: 'Efficency ratio' },
@@ -183,11 +176,6 @@ function abbrState(input, to){
     }
   };
   
-
-  // if (!bankData) {
-  //   return <div>Loading...</div>
-  // }
-
   return (
     <div >
       {bankData ? (
