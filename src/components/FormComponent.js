@@ -124,9 +124,9 @@ function abbrState(input, to){
 
   
   const metricOptions = [
-    { value: 'ASSET', label: 'Asset' },
+    // { value: 'ASSET', label: 'Asset' },
     { value: 'DEP', label: 'Deposit' },
-    { value: 'ROA', label: 'Return on assets' },
+    // { value: 'ROA', label: 'Return on assets' },
     { value: 'ROE', label: 'Return on equity' },
     { value: 'NIMY', label: 'Net interest margin' },
     { value: 'EEFFR', label: 'Efficency ratio' },

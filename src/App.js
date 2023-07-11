@@ -4,26 +4,11 @@ import PlotComponent from './components/PlotComponent.js';
 import './App.css';
 
 function App() {
-  // const [data, setData] = useState({});
-
-  // useEffect(() => {
-  //   fetch('/api').then(
-  //     response => response.json()
-  //   ).then(
-  //     data => {
-  //       setData (data)
-  //       console.log(data)
-  //     }
-  //   )
-  // }, []);
-
-  // const addDataHandler = data => {
-  //   console.log('In app.js');
-  //   console.log(data)
-  //   const bankInfo = data;
-  // }
-
+  
   const [returnData, setReturnData] = useState(null);
+  if (returnData){
+    console.log(returnData)
+  }
   return (
     <div className = "wrapper">
       <h1>Banking Dashboard</h1>
