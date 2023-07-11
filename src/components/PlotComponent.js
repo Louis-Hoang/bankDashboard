@@ -71,8 +71,7 @@ const PlotComponent = ({ returnData }) => {
     var eq = returnData['equity'].slice(-1);
   }
 
-  if (returnData && typeof returnData['data'][0] == 'string') {
-    // console.log(returnData)
+  if (returnData ) {
     return (
       <div className = "wrapper">
         <Plot
@@ -83,7 +82,7 @@ const PlotComponent = ({ returnData }) => {
                 type: 'scatter'
               }
             ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graph` , yaxis : {tickformat: '$,'}} }
+          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graph`, yaxis: { tickformat:typeof returnData['data'][0] == 'string' ? ('$,') : (',') }} }
         />
         <Plot
           data={[
@@ -103,7 +102,7 @@ const PlotComponent = ({ returnData }) => {
                 type: 'scatter'
               }
             ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: '$,'}} }
+          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: ','}} }
         />
         <div className="bal_sheet">
           <p>Total Asset: {asset}</p>
@@ -118,54 +117,7 @@ const PlotComponent = ({ returnData }) => {
       </div>
     );
   }
-  else if (returnData) {
-    
-    return (
-      <div className = "wrapper">
-        <Plot
-          data={[
-              {
-                x: returnData['year'],
-                y: returnData['data'],
-                type: 'scatter'
-              }
-            ]}
-          layout={ {width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graphs`, yaxis: {tickformat:','}} }
-        />
-        <Plot
-          data={[
-              {
-                x: returnData['year'],
-                y: returnData['asset'],
-                type: 'scatter'
-              }
-            ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Asset Graph` , yaxis : {tickformat: '$,'}} }
-        />
-        <Plot
-          data={[
-              {
-                x: returnData['year'],
-                y: returnData['roa'],
-                type: 'scatter'
-              }
-            ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: '$,'}} }
-        />
-        <div className="bal_sheet">
-          <p>Total Asset: {asset}</p>
-          <p>Cash from Dep: {cash_dep}</p>
-          <p>Securities: {securities}</p>
-          <p>Net Loan & Leases: {net_lnls}</p>
-          <p>Other Asset: {other_asset} </p>
-          <p>Liabilities & Capital: {lib_cap}</p>
-          <p>Liabilities: {liab}</p>
-          <p>Equity: {eq}</p>
-        </div>
-      </div>
-      
-    );
-  }
+
   
 };
 
