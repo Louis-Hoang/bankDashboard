@@ -4,9 +4,9 @@ import Select,{ createFilter } from 'react-select'
 import MenuList from './MenuList';
 
 
-const FormComponent = ({ setReturnData }) => {
+const FormComponent = ({ setReturnData, setLoading }) => {
   const [bankData, setBankData] = useState(null);
-
+  
   
 function abbrState(input, to){  
     var states = [
@@ -148,6 +148,7 @@ function abbrState(input, to){
     event.preventDefault();
     if (formData.bank && formData.metric && formData.year) {
       try {
+        setLoading(true);
         const response = await fetch('/submit-form', {
           method: 'POST',
           headers: {
@@ -159,7 +160,7 @@ function abbrState(input, to){
         // Handle the response as needed
         const data = await response.json();
         setReturnData(data);
-      
+        setLoading(false);
         // props.onAddData(data)
         // Clear the form inputs and reset the state
         setFormData({

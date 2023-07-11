@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js';
 import '../assets/PlotComponent.css';
 
 
-const PlotComponent = ({ returnData }) => {
+const PlotComponent = ({ returnData, loading }) => {
   function linearRegression(x,y){
         var lr = {};
         var n = y.length;
@@ -71,7 +71,15 @@ const PlotComponent = ({ returnData }) => {
     var eq = returnData['equity'].slice(-1);
   }
 
-  if (returnData ) {
+  if (loading && !returnData) {
+    return (
+      <div className="loadingContainer">
+        <div className="loadingSpinner"></div>
+        <div className="loadingText">Loading...</div>
+      </div>
+    );  
+  }
+  else if (returnData) {
     return (
       <div className = "wrapper">
         <Plot
@@ -105,11 +113,11 @@ const PlotComponent = ({ returnData }) => {
           layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: ','}} }
         />
         <div className="bal_sheet">
-          <p>Total Asset: {asset}</p>
+          <p>Total Assets: {asset}</p>
           <p>Cash from Dep: {cash_dep}</p>
           <p>Securities: {securities}</p>
           <p>Net Loan & Leases: {net_lnls}</p>
-          <p>Other Asset: {other_asset} </p>
+          <p>Other Assets: {other_asset} </p>
           <p>Liabilities & Capital: {lib_cap}</p>
           <p>Liabilities: {liab}</p>
           <p>Equity: {eq}</p>
