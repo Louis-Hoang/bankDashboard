@@ -89,8 +89,17 @@ const PlotComponent = ({ returnData, loading }) => {
                 {
                   x: returnData['year'],
                   y: returnData['data'],
-                  type: 'scatter'
+                  type: 'scatter',
+                  name: "Raw Data"
+                },
+              {
+                x: returnData['year'],
+                // y: returnData['data'],
+                y: returnData[`${[returnData['metricName'].toLowerCase()]}_rm`],
+                type: 'scatter',
+                name: "Rolling Mean"
                 }
+              ,
               ]}
             layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graph`, yaxis: { tickformat:typeof returnData['data'][0] == 'string' ? ('$,') : (',') }} }
           />
@@ -98,18 +107,32 @@ const PlotComponent = ({ returnData, loading }) => {
             data={[
                 {
                   x: returnData['year'],
-                  y: returnData['asset'],
-                  type: 'scatter'
+                  y: returnData['n_interest_margin'],
+                  type: 'scatter',
+                  name: "Raw data"
+              },
+              {
+                  x: returnData['year'],
+                  y: returnData['n_interest_margin_rm'],
+                  type: 'scatter',
+                  name: "Rolling Mean"
                 }
               ]}
-            layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Asset Graph` , yaxis : {tickformat: '$,'}} }
+            layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Net Interest Margin Graph` , yaxis : {tickformat: ','}} }
           />
           <Plot
             data={[
                 {
                   x: returnData['year'],
                   y: returnData['roa'],
-                  type: 'scatter'
+                  type: 'scatter',
+                  name: "Raw data"
+                },
+                {
+                  x: returnData['year'],
+                  y: returnData['roa_rm'],
+                  type: 'scatter',
+                  name: "Rolling Mean"
                 }
               ]}
             layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: ','}} }
@@ -119,8 +142,15 @@ const PlotComponent = ({ returnData, loading }) => {
                 {
                   x: returnData['year'],
                   y: returnData['charge_off'],
-                  type: 'scatter'
-                }
+                  type: 'scatter',
+                  name: "Raw data"
+                },
+                {
+                  x: returnData['year'],
+                  y: returnData['charge_off_rm'],
+                  type: 'scatter',
+                  name: "Rolling Mean"
+                },
               ]}
             layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Net Charge-Offs Graph` , yaxis : {tickformat: ','}} }
           />
