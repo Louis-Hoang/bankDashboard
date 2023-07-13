@@ -69,7 +69,7 @@ def submit_form():
 
     defaultDict = {'asset': [temp[i]['ASSET'] for i in temp], 'cash_from_dep': [temp[i]['CHBAL'] for i in temp], 'sec': [temp[i]['SC'] for i in temp],'net_ln&ls':[temp[i]['LNLSNET'] for i in temp],
                'ot_asset':[temp[i]['OTASSET'] for i in temp], 'liab&capt': [temp[i]['LIABEQ'] for i in temp], 'liab': [temp[i]['LIAB'] for i in temp], 'equity': [temp[i]['EQ'] for i in temp],
-               'roa': [temp[i]['ROA'] for i in temp], 'ln&ls_ratio': [temp[i]['DRLNLSR'] for i in temp], }
+               'roa': [temp[i]['ROA'] for i in temp], 'ln&ls_ratio': [temp[i]['DRLNLSR'] for i in temp], 'charge_off':[temp[i]['NTLNLS'] for i in temp]}
 
     returnJson = {'bank': fullBankName, 'metricName':metric, 'state': list(temp.values())[0]['STNAME'], 'year':[i for i in temp], 'data':[temp[i]["{}".format(metric)] for i in temp]}
     returnJson.update(defaultDict)

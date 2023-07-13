@@ -82,6 +82,7 @@ function abbrState(input, to){
   useEffect(() => {
     const fetchBankData = async () => {
       try {
+        console.log('first');
         const response = await fetch(
           'https://banks.data.fdic.gov/api/institutions?filters=ACTIVE%3A1&fields=STNAME%2CNAME&limit=10000&format=json&download=false&filename=data_file'
         );
@@ -123,7 +124,7 @@ function abbrState(input, to){
     { value: 'ROE', label: 'Return on equity' },
     { value: 'NIMY', label: 'Net interest margin' },
     { value: 'EEFFR', label: 'Efficency ratio' },
-    { value: 'NTLNLS', label: 'Total net charge-off' },
+    // { value: 'NTLNLS', label: 'Total net charge-off' },
     { value: 'NTLNLSCOR', label: 'Total net charge-off ratio' }
   ]
   

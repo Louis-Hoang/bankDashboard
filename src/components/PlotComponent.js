@@ -69,6 +69,7 @@ const PlotComponent = ({ returnData, loading }) => {
     var lib_cap = returnData['liab&capt'].slice(-1);
     var liab = returnData['liab'].slice(-1);
     var eq = returnData['equity'].slice(-1);
+    console.log(returnData);
   }
 
   if (loading) {
@@ -81,46 +82,83 @@ const PlotComponent = ({ returnData, loading }) => {
   }
   else if (returnData) {
     return (
-      <div className = "wrapper">
-        <Plot
-          data={[
-              {
-                x: returnData['year'],
-                y: returnData['data'],
-                type: 'scatter'
-              }
-            ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graph`, yaxis: { tickformat:typeof returnData['data'][0] == 'string' ? ('$,') : (',') }} }
-        />
-        <Plot
-          data={[
-              {
-                x: returnData['year'],
-                y: returnData['asset'],
-                type: 'scatter'
-              }
-            ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Asset Graph` , yaxis : {tickformat: '$,'}} }
-        />
-        <Plot
-          data={[
-              {
-                x: returnData['year'],
-                y: returnData['roa'],
-                type: 'scatter'
-              }
-            ]}
-          layout={{ margin: { l: 140 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: ','}} }
-        />
+      <div className="wrapper_inner">
+        <div className="plot_1">
+          <Plot
+            data={[
+                {
+                  x: returnData['year'],
+                  y: returnData['data'],
+                  type: 'scatter'
+                }
+              ]}
+            layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ${returnData['metricName']} Graph`, yaxis: { tickformat:typeof returnData['data'][0] == 'string' ? ('$,') : (',') }} }
+          />
+          <Plot
+            data={[
+                {
+                  x: returnData['year'],
+                  y: returnData['asset'],
+                  type: 'scatter'
+                }
+              ]}
+            layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Asset Graph` , yaxis : {tickformat: '$,'}} }
+          />
+          <Plot
+            data={[
+                {
+                  x: returnData['year'],
+                  y: returnData['roa'],
+                  type: 'scatter'
+                }
+              ]}
+            layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, ROA Graph` , yaxis : {tickformat: ','}} }
+          />
+          <Plot
+            data={[
+                {
+                  x: returnData['year'],
+                  y: returnData['charge_off'],
+                  type: 'scatter'
+                }
+              ]}
+            layout={{ margin: { l: 100 }, width: 620, height: 440, title: `${returnData['bank']}, ${stateName}, Net Charge-Offs Graph` , yaxis : {tickformat: ','}} }
+          />
+        </div>
         <div className="bal_sheet">
-          <p>Total Assets: {asset}</p>
-          <p>Cash from Dep: {cash_dep}</p>
-          <p>Securities: {securities}</p>
-          <p>Net Loan & Leases: {net_lnls}</p>
-          <p>Other Assets: {other_asset} </p>
-          <p>Liabilities & Capital: {lib_cap}</p>
-          <p>Liabilities: {liab}</p>
-          <p>Equity: {eq}</p>
+          <h2>Balance Sheet</h2>
+          <div className="main_item">
+            <span>Total Assets</span>
+            <span>{asset}</span>
+          </div>
+          <div className="bal_sheet_item">
+            <span>Cash from Deposit</span>
+            <span>{cash_dep}</span>
+          </div>
+          <div className="bal_sheet_item">
+            <span>Securities</span>
+            <span>{securities}</span>
+          </div>
+          <div className="bal_sheet_item">
+            <span>Net Loan & Leases</span>
+            <span>{net_lnls}</span>
+          </div>
+          <div className="bal_sheet_item">
+            <span>Other Assets</span>
+            <span>{other_asset}</span>
+          </div>
+          <div className= "main_item">
+            <span>Liabilities & Capital</span>
+            <span>{lib_cap}</span>
+          </div>
+          <div className="bal_sheet_item">
+            <span>Liabilities</span>
+            <span>{liab}</span>
+          </div>
+          <div className="bal_sheet_item">
+            <span>Equity</span>
+            <span>{eq}</span>
+          </div>
         </div>
       </div>
     );
