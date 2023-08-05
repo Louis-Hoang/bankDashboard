@@ -1,5 +1,5 @@
 Flask==2.2.5
 matplotlib==3.5.3
-numpy==1.25.0
+numpy==1.21.6
 pandas==2.0.2
 Requests==2.31.0
