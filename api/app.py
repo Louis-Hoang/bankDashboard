@@ -87,4 +87,4 @@ def submit_form():
     return 'Form data received and processed'
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port= 10000)
