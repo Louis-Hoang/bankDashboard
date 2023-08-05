@@ -30,7 +30,7 @@ def res(bankName,state,year,metric):
         start, end  = temp[0], temp[1]
         link = "https://banks.data.fdic.gov/api/financials?filters=CERT%3A{}%20AND%20REPYEAR%3A%20%5B{}%20TO%20{}%5D&fields=CERT%2CCHBAL%2CLNLSNET%2CSC%2CLIABEQ%2CLIAB%2CEQ%2CDRLNLSR%2CREPDTE%2CSTNAME%2CASSET%2CDEP%2CROA%2CROE%2CNIMY%2CEEFFR%2CNTLNLS%2CNTLNLSCOR&limit=100&offset=0&agg_limit=100&format=json&download=false&filename=data_file".format(certNum, start, end)
     response = requests.get(link)
-    response = requests.get(link)
+    # response = requests.get(link)
     res = response.json()['data']   
     df = [res[i]['data']for i in range(len(res))]
     df = pd.DataFrame(df)[['CERT','REPDTE','STNAME','DEP', 'ROA','ROE','NIMY','EEFFR','NTLNLS','NTLNLSCOR','DRLNLSR','ASSET','CHBAL','SC','LNLSNET','LIABEQ','LIAB','EQ']]

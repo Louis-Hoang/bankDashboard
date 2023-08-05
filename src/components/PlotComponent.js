@@ -87,7 +87,7 @@ const PlotComponent = ({ returnData, loading }) => {
           <Plot
             data={[
                 {
-                  x: returnData['year'],
+                  x: returnData['year'], 
                   y: returnData['data'],
                   type: 'scatter',
                   name: "Raw Data"

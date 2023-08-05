@@ -118,14 +118,13 @@ function abbrState(input, to){
     fetchBankData();
   }, []);
 
-  
   const metricOptions = [
     { value: 'ASSET', label: 'Asset' },
     { value: 'DEP', label: 'Deposit' },
     { value: 'ROE', label: 'Return on equity' },
     // { value: 'NIMY', label: 'Net interest margin' },
-    { value: 'EEFFR', label: 'Efficency ratio' },
     // { value: 'NTLNLS', label: 'Total net charge-off' },
+    { value: 'EEFFR', label: 'Efficency ratio' },
     { value: 'NTLNLSCOR', label: 'Total net charge-off ratio' }
   ]
   
