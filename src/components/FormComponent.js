@@ -149,16 +149,13 @@ const FormComponent = ({ setReturnData, setLoading }) => {
         if (formData.bank && formData.metric && formData.year) {
             try {
                 setLoading(true);
-                const response = await fetch(
-                    "https://bankdashboard.onrender.com/submit-form",
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(formData),
-                    }
-                );
+                const response = await fetch("/submitForm", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(formData),
+                });
 
                 // Handle the response as needed
                 const data = await response.json();

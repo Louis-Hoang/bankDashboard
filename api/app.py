@@ -60,10 +60,11 @@ def res(bankName,state,year,metric):
 
 
 
-@app.route('/submit-form', methods=['POST'])
+@app.route('/submitForm', methods=['POST'])
 def submit_form():
     # Access individual form fields by name
     form_data = request.get_json()
+    print(form_data)
     # Access individual form fields by name, these are string
     bank = form_data.get('bank')[0]
     state = form_data.get('bank')[1]
