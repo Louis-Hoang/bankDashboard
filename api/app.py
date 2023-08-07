@@ -6,8 +6,12 @@ import requests
 import json
 import pandas as pd
 import urllib.parse
+from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
+
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 #Get Cert ID from bank name
 def getCert(bankName,state): #add more parameter beside bank name, financial metric, which quarters, etc.
@@ -58,8 +62,7 @@ def res(bankName,state,year,metric):
 
 
 
-
-
+@cross_origin()
 @app.route('/submitForm', methods=['POST'])
 def submit_form():
     # Access individual form fields by name
