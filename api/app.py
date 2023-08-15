@@ -10,6 +10,7 @@ from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
 
+#Change later using reverse proxy
 cors = CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
 
